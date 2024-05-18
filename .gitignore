@@ -1,0 +1,11 @@
+# Ignorar archivos de dependencias y directorios de paquetes
+node_modules/
+
+# Ignorar archivos de IDE y editores de texto
+.vscode/
+
+# Directorio de .js compilados
+/dist
+
+# npm lock file
+package-lock.json
