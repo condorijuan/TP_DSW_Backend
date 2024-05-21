@@ -1,0 +1,39 @@
+###GET ALL
+GET http://localhost:8080/api/profesional
+
+### GET BY ID
+GET http://localhost:8080/api/profesional/123
+
+### POST
+POST http://localhost:8080/api/profesional
+Content-Type: application/json
+
+{
+    "id": "1",
+    "nombre": "Juan",
+    "apellido": "Perez"
+}
+
+### PUT
+PUT http://localhost:8080/api/profesional/123
+Content-Type: application/json
+
+{
+    "id": "1",
+    "nombre": "Juan",
+    "apellido": "Ferrarez"
+}
+
+### PATCH
+PATCH http://localhost:8080/api/profesional/1
+Content-Type: application/json
+
+{
+    "id": "1",
+    "nombre": "Juan",
+    "apellido": "Manuel"
+}
+
+### DELETE
+DELETE http://localhost:8080/api/profesional/123
+
