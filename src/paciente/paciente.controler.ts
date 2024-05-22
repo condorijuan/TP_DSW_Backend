@@ -29,7 +29,7 @@ function findAll(req: Request, res: Response) {
 }
 
 function findOne(req: Request, res: Response) {
-  const paciente = Repository.findOne({ id: req.params.id });
+  const paciente = Repository.findOne({ id: req.params.dni });
 
   if (!paciente) {
     return res.status(404).send({ message: 'Not Found' });
@@ -44,7 +44,7 @@ function add(req: Request, res: Response) {
 
   const paciente = Repository.add(pacienteInput);
 
-  return res.status(201).json({ message: 'profecional agregado', data: paciente });
+  return res.status(201).json({ message: 'paciente agregado', data: paciente });
 }
 
 function update(req: Request, res: Response) {
@@ -58,18 +58,18 @@ function update(req: Request, res: Response) {
     return res.status(404).send({ message: 'Not Found' });
   }
 
-  return res.status(200).json({ message: 'profesional actualizado', data: paciente });
+  return res.status(200).json({ message: 'paciente actualizado', data: paciente });
 }
 
 function remove(req: Request, res: Response) {
-  const id = req.params.id;
+  const id = req.params.dni;
   const paciente = Repository.delete({ id });
   console.log(paciente);
   if (!paciente) {
     return res.status(404).send({ message: 'Not Found' });
   }
   else {
-    return res.status(200).json({ message: 'profesional eliminado', data: paciente });
+    return res.status(200).json({ message: 'paciente eliminado', data: paciente });
   }
 }
 
