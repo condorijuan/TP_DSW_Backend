@@ -5,7 +5,7 @@ export const pacienteRouters = Router();
 
 pacienteRouters.get('/', findAll);
 
-pacienteRouters.get('/:id', findOne);
+pacienteRouters.get('/:dni', findOne);
 
 pacienteRouters.post('/', sanitizeProfesional, add);
 

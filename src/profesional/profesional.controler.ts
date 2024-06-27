@@ -36,7 +36,7 @@ function findOne(req: Request, res: Response) {
 function add(req: Request, res: Response) {
   const input = req.body.sanitize;
 
-  const profesionalInput = new Profesional(input.id, input.nombre, input.apellido);
+  const profesionalInput = new Profesional(input.id, input.nombre, input.apellido, input.direccion, input.telefono, input.email, input.estado);
 
   const profesional = Repository.add(profesionalInput);
 
@@ -46,7 +46,7 @@ function add(req: Request, res: Response) {
 function update(req: Request, res: Response) {
   const input = req.body.sanitize;
 
-  const profesionalInput = new Profesional(input.id, input.nombre, input.apellido);
+  const profesionalInput = new Profesional(input.id, input.nombre, input.apellido, input.direccion, input.telefono, input.email, input.estado);
 
   const profesional = Repository.update(profesionalInput);
 

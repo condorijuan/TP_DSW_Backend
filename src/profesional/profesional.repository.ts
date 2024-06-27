@@ -1,7 +1,7 @@
 import { Repository } from "../shared/repository.js";
 import { Profesional } from "./profesional.entity.js";
 
-const profesionales = [new Profesional('123', 'Juan', 'Perez')]
+const profesionales = [new Profesional('123', 'Juan', 'Perez', 'Zevallos 341', '3417232323', 'juan@hotmail.com', 'vigente')]
 
 export class ProfesionalRepository implements Repository<Profesional> {
 
