@@ -1,8 +1,12 @@
-export class Antecedente {
-  constructor(
-    public cod_antecedente: string,
-    public tipo: string,
-    public nombre_condicion: string,
-    public descripcion: string,
-  ) { }
+import { Entity, ManyToOne, Property, Cascade, Collection } from "@mikro-orm/core";
+import { BaseEntity } from "../shared/db/baseEntity.entity.js";
+
+@Entity()
+export class Antecedente extends BaseEntity{
+  
+  @Property()
+  nombre_condicion!: string
+
+  @Property()
+  descripcion!: string
 }

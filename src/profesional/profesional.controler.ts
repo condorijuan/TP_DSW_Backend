@@ -1,8 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { ProfesionalRepository } from "./profesional.repository.js";
-import { Profesional } from "./profesional.entity.js";
-
-const Repository = new ProfesionalRepository();
+//import { Profesional } from "./profesional.entity.js";
 
 function sanitizeProfesional(req: Request, res: Response, next: NextFunction) {
   req.body.sanitize = {
@@ -21,52 +18,23 @@ function sanitizeProfesional(req: Request, res: Response, next: NextFunction) {
 }
 
 function findAll(req: Request, res: Response) {
-  res.json({ data: Repository.findAll() });
+  res.status(500).json({message: 'Not implemented'});
 }
 
 function findOne(req: Request, res: Response) {
-  const profesional = Repository.findOne({ id: req.params.id });
-
-  if (!profesional) {
-    return res.status(404).send({ message: 'Not Found' });
-  }
-  res.json({ data: profesional });
+  res.status(500).json({message: 'Not implemented'});
 }
 
 function add(req: Request, res: Response) {
-  const input = req.body.sanitize;
-
-  const profesionalInput = new Profesional(input.id, input.nombre, input.apellido, input.direccion, input.telefono, input.email, input.estado);
-
-  const profesional = Repository.add(profesionalInput);
-
-  return res.status(201).json({ message: 'profecional agregado', data: profesional });
+  res.status(500).json({message: 'Not implemented'});
 }
 
 function update(req: Request, res: Response) {
-  const input = req.body.sanitize;
-
-  const profesionalInput = new Profesional(input.id, input.nombre, input.apellido, input.direccion, input.telefono, input.email, input.estado);
-
-  const profesional = Repository.update(profesionalInput);
-
-  if (!profesional) {
-    return res.status(404).send({ message: 'Not Found' });
-  }
-
-  return res.status(200).json({ message: 'profesional actualizado', data: profesional });
+  res.status(500).json({message: 'Not implemented'});
 }
 
 function remove(req: Request, res: Response) {
-  const id = req.params.id;
-  const profesional = Repository.delete({ id });
-  console.log(profesional);
-  if (!profesional) {
-    return res.status(404).send({ message: 'Not Found' });
-  }
-  else {
-    return res.status(200).json({ message: 'profesional eliminado', data: profesional });
-  }
+  res.status(500).json({message: 'Not implemented'});
 }
 
 export { sanitizeProfesional, findAll, findOne, add, remove, update };

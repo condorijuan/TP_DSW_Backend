@@ -1,27 +1,38 @@
+import 'reflect-metadata';
 import express from 'express';
 import { profesionalRouters } from './profesional/profesional.routes.js';
 import { pacienteRouters } from './paciente/paciente.routes.js';
-import { alergiaRouters } from './alergias/alergias.routes.js';
+//import { alergiaRouters } from './alergias/alergias.routes.js';
 import { antecedentesRouters } from './antecedentes/antecedentes.routes.js';
 import { turnoRouters } from './turno/turno.routes.js';
+import { orm, syncSchema } from './shared/db/orm.js';
+import { RequestContext } from '@mikro-orm/core';
 
 const app = express();
 
 app.use(express.json());
 
+//luego de los middlewares base
+app.use((req, res, next) => {
+  RequestContext.create(orm.em, next)
+})
+//antes de las rutas y middlewares de negocio
+
 app.use('/api/profesional', profesionalRouters)
 
 app.use('/api/paciente', pacienteRouters)
 
-app.use('/api/alergia', alergiaRouters)
+//app.use('/api/alergia', alergiaRouters)
 
 app.use('/api/antecedente', antecedentesRouters)
 
 app.use('/api/turno', turnoRouters)
 
-app.use((req, res) => {
-  res.status(404).send('404 Not Found');
+app.use((_, res) => {
+  return res.status(404).send({ message: 'Resource not Found' });
 });
+
+await syncSchema(); //never in production
 
 app.listen(8080, () => {
   console.log('Server is running on http://localhost:8080');
