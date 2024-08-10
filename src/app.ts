@@ -2,8 +2,8 @@ import 'reflect-metadata';
 import express from 'express';
 import { profesionalRouters } from './profesional/profesional.routes.js';
 import { pacienteRouters } from './paciente/paciente.routes.js';
-//import { alergiaRouters } from './alergias/alergias.routes.js';
 import { antecedentesRouters } from './antecedentes/antecedentes.routes.js';
+import { tipoImagenRouters } from './tipoImagen/tipoImagen.routes.js';
 import { turnoRouters } from './turno/turno.routes.js';
 import { orm, syncSchema } from './shared/db/orm.js';
 import { RequestContext } from '@mikro-orm/core';
@@ -22,9 +22,9 @@ app.use('/api/profesional', profesionalRouters)
 
 app.use('/api/paciente', pacienteRouters)
 
-//app.use('/api/alergia', alergiaRouters)
-
 app.use('/api/antecedente', antecedentesRouters)
+
+app.use('/api/tipoImagen', tipoImagenRouters)
 
 app.use('/api/turno', turnoRouters)
 
