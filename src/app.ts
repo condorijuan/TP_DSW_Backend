@@ -7,10 +7,12 @@ import { tipoImagenRouters } from './tipoImagen/tipoImagen.routes.js';
 import { turnoRouters } from './turno/turno.routes.js';
 import { orm, syncSchema } from './shared/db/orm.js';
 import { RequestContext } from '@mikro-orm/core';
+import cors from 'cors'
 
 const app = express();
 
 app.use(express.json());
+app.use(cors())
 
 //luego de los middlewares base
 app.use((req, res, next) => {
