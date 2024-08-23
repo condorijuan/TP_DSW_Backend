@@ -12,5 +12,5 @@ export class TipoImagen extends BaseEntity{
     /* cascade: [Cascade.ALL], */
   })
   imagenes= new Collection<Imagen>(this) 
+  
   }
-  //imagenes: Imagen[]
