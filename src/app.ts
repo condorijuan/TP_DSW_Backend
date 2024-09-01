@@ -9,6 +9,7 @@ import { turnoRouters } from './turno/turno.routes.js';
 import { orm, syncSchema } from './shared/db/orm.js';
 import { RequestContext } from '@mikro-orm/core';
 import cors from 'cors'
+import { tipoantecedenteRouters } from './tipo-antecente/tipo-antecedente.routes.js';
 
 const app = express();
 
@@ -26,6 +27,8 @@ app.use('/api/profesional', profesionalRouters)
 app.use('/api/paciente', pacienteRouters)
 
 app.use('/api/antecedente', antecedentesRouters)
+
+app.use('/api/tipoantecedente', tipoantecedenteRouters)
 
 app.use('/api/tipoImagen', tipoImagenRouters)
 
