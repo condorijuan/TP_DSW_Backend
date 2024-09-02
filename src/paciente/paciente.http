@@ -2,14 +2,13 @@
 GET http://localhost:8080/api/paciente
 
 ### GET BY ID
-GET http://localhost:8080/api/paciente/123
+GET http://localhost:8080/api/paciente/1
 
 ### POST
 POST http://localhost:8080/api/paciente
 Content-Type: application/json
 
 {
-    "dni": "456",
     "nombre": "Juan",
     "apellido": "Ignacio",
     "genero":"Masculino",
@@ -19,11 +18,10 @@ Content-Type: application/json
 }
 
 ### PUT
-PUT http://localhost:8080/api/paciente/456
+PUT http://localhost:8080/api/paciente/2
 Content-Type: application/json
 
 {
-    "dni": "456",
     "nombre": "Juan",
     "apellido": "Langosta",
     "genero":"Masculino",
@@ -47,5 +45,5 @@ Content-Type: application/json
 }
 
 ### DELETE
-DELETE http://localhost:8080/api/paciente/456
+DELETE http://localhost:8080/api/paciente/2
 

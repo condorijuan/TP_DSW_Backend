@@ -1,8 +1,8 @@
-import {Entity, OneToMany, Property, Cascade, Collection } from "@mikro-orm/core";
+import { Entity, OneToMany, Property, Cascade, Collection } from "@mikro-orm/core";
 import { BaseEntity } from "../shared/db/baseEntity.entity.js";
 
 @Entity()
-export class Paciente extends BaseEntity{
+export class Paciente extends BaseEntity {
 
   @Property()
   nombre!: string
@@ -21,5 +21,5 @@ export class Paciente extends BaseEntity{
 
   @Property()
   email!: string
-  
+
 }
