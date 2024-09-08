@@ -6,7 +6,9 @@ const em = orm.em
 
 async function findAll(req: Request, res: Response) {
   try {
-      const antecedentes = await em.find(Antecedente, {})
+      const antecedentes = await em.find(Antecedente, {},
+        {populate: ['tipoantecedente']}
+      )
       res.status(200).json({message: 'finded all antecedentes', data: antecedentes})
   } catch (error: any) {
     res.status(500).json({message: 'Not implemented'})
