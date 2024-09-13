@@ -12,8 +12,8 @@ export const orm = await MikroORM.init({
     debug: true,
     schemaGenerator: {  //never in production
         disableForeignKeys: true,
-        createForeignKeyConstraints:true,
-        ignoreSchema:[],
+        createForeignKeyConstraints: true,
+        ignoreSchema: [],
     },
 })
 
@@ -23,5 +23,5 @@ export const syncSchema = async () => {
     await generator.dropSchema()
     await generator.createSchema()
     */
-   await generator.updateSchema()
+    await generator.updateSchema()
 }
