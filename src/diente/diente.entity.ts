@@ -1,6 +1,7 @@
 import { Entity, OneToMany, ManyToOne, Property, Cascade, Collection, Rel } from "@mikro-orm/core";
 import { BaseEntity } from "../shared/db/baseEntity.entity.js";
 import { Odontograma } from "../odontogramas/odontograma.entity.js";
+import { Cara } from "../cara/cara.entity.js";
 
 @Entity()
 export class Diente extends BaseEntity {
@@ -16,4 +17,7 @@ export class Diente extends BaseEntity {
 
   @ManyToOne(() => Odontograma, { nullable: false })
   odontograma!: Rel<Odontograma>
+
+  @OneToMany(() => Cara, cara => cara.diente, { cascade: [Cascade.ALL] })
+  caras = new Collection<Cara>(this)
 }
