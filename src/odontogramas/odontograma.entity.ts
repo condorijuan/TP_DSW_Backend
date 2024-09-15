@@ -21,6 +21,6 @@ export class Odontograma extends BaseEntity {
     @Property()
     link!: string
 
-    @OneToOne(() => Paciente, paciente => paciente.odontograma, { nullable: true })
+    @OneToOne(() => Paciente, paciente => paciente.odontograma, { nullable: true, owner: true })
     paciente?: Rel<Paciente>;
 }

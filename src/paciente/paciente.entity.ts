@@ -23,7 +23,7 @@ export class Paciente extends BaseEntity {
   @Property()
   email!: string
 
-  @OneToOne(() => Odontograma, odontograma => odontograma.paciente, { nullable: true, owner: true })
+  @OneToOne(() => Odontograma, odontograma => odontograma.paciente, { nullable: true })
   odontograma?: Rel<Odontograma>;
 
 }
