@@ -1,2 +1,17 @@
 ### GET ALL
 Get http://localhost:8080/api/tipoImagen
+
+### POST
+# @name createtipoImagen
+POST http://localhost:8080/api/tipoImagen
+Content-Type: application/json
+
+{
+    "nombre": "Resonancia Magnetica"
+}
+
+### ID
+@id = {{createtipoImagen.response.body.data.id}}
+
+### GET ONE
+GET http://localhost:8080/api/tipoImagen/{{id}}

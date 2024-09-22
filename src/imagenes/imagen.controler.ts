@@ -19,7 +19,7 @@ function findOne(req: Request, res: Response) {
     res.status(500).json({message: 'Not implemented'});
 }
 
-function add(req: Request, res: Response) {
+async function add(req: Request, res: Response) {
     res.status(500).json({message: 'Not implemented'});
 }
 

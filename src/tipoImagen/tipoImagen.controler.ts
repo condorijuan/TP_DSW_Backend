@@ -13,12 +13,28 @@ async function findAll(req: Request, res: Response) {
     }
 }
 
-function findOne(req: Request, res: Response) {
-    res.status(500).json({message: 'Not implemented'});
+async function findOne(req: Request, res: Response) {
+    try {
+        const id = Number.parseInt(req.params.id)
+        const tipoImagen = await em.findOneOrFail(TipoImagen, {id})
+        res
+        .status(500)
+        .json({message: 'found tipoImagen class', data: tipoImagen});
+    } catch (error: any) {
+        res.status(500).json({message: error.message});
+    }
 }
 
-function add(req: Request, res: Response) {
-    res.status(500).json({message: 'Not implemented'});
+async function add(req: Request, res: Response) {
+    try {
+        const tipoImagen = em.create(TipoImagen, req.body)
+        await em.flush()
+        res
+            .status(201)
+            .json({message: 'tipoImagen class created', data: tipoImagen});
+    } catch (error: any) {
+        res.status(500).json({ message: error.message })
+    }
 }
 
 function update(req: Request, res: Response) {
