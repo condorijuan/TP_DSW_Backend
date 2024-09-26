@@ -37,12 +37,27 @@ async function add(req: Request, res: Response) {
     }
 }
 
-function update(req: Request, res: Response) {
-    res.status(500).json({message: 'Not implemented'});
+async function update(req: Request, res: Response) {
+    try {
+        const id = Number.parseInt(req.params.id)
+        const tipoImagen = em.getReference(TipoImagen, id)
+        em.assign(tipoImagen, req.body)
+        await em.flush()
+        res.status(200).json({message: 'tipoImagen updated'});
+    } catch (error: any) {
+        res.status(500).json({ message: error.message })
+    }
 }
 
-function remove(req: Request, res: Response) {
-    res.status(500).json({message: 'Not implemented'});
+async function remove(req: Request, res: Response) {
+    try {
+        const id = Number.parseInt(req.params.id)
+        const tipoImagen = em.getReference(TipoImagen, id)
+        await em.removeAndFlush(tipoImagen)
+        res.status(200).send({ message: 'tipoImagen deleted'})
+    } catch (error: any) {
+        res.status(500).json({ message: error.message })
+    }
 }
 
 export {findAll, findOne, add, remove, update};
