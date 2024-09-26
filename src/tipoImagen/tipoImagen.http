@@ -1,17 +1,29 @@
 ### GET ALL
 Get http://localhost:8080/api/tipoImagen
 
-### POST
-# @name createtipoImagen
+### POST CHARACTER TO DELETE
+# @name createtipoImagenToDelete
 POST http://localhost:8080/api/tipoImagen
 Content-Type: application/json
 
 {
-    "nombre": "Resonancia Magnetica"
+    "nombre": "Resonancia Magnetica16"
 }
 
 ### ID
-@id = {{createtipoImagen.response.body.data.id}}
+@id = {{}}
 
 ### GET ONE
-GET http://localhost:8080/api/tipoImagen/{{id}}
+GET http://localhost:8080/api/tipoImagen/{{idToDelete}}
+
+### PUT
+PUT http://localhost:8080/api/tipoImagen/{{id}}
+Content-Type: application/json
+
+{
+    "nombre": "Resonancia Magnetica6"
+}
+
+### DELETE
+@idToDelete = {{createtipoImagenToDelete.response.body.data.id}}
+DELETE http://localhost:8080/api/tipoImagen/{{idToDelete}}
