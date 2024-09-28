@@ -16,10 +16,11 @@ async function findAll(req: Request, res: Response) {
 async function findOne(req: Request, res: Response) {
     try {
         const id = Number.parseInt(req.params.id)
-        const tipoImagen = await em.findOneOrFail(TipoImagen, {id})
-        res
-        .status(500)
-        .json({message: 'found tipoImagen class', data: tipoImagen});
+        const data = await em.findOneOrFail(TipoImagen, {id})
+        res.json(data);
+        /* res
+        .status(200)
+        .json({message: 'found tipoImagen class', data: tipoImagen}); */
     } catch (error: any) {
         res.status(500).json({message: error.message});
     }
