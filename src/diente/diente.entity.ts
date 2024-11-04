@@ -10,10 +10,10 @@ export class Diente extends BaseEntity {
   codigo!: number
 
   @Property()
-  descripcion!: string
+  descripcion!: string | null
 
   @Property()
-  estado!: string
+  estado!: string | null
 
   @ManyToOne(() => Odontograma, { nullable: false })
   odontograma!: Rel<Odontograma>

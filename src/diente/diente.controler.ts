@@ -95,4 +95,22 @@ async function remove(req: Request, res: Response) {
   }
 }
 
-export { sanitizeDiente, findAll, findOne, add, update, remove };
+async function findByOdontograma(req: Request, res: Response) {
+  try {
+    const odontogramaId = parseInt(req.params.odontogramaId, 10);
+    if (isNaN(odontogramaId)) {
+      return res.status(400).json({ message: 'Invalid Odontograma ID format' });
+    }
+
+    const dientes = await em.find(Diente, { odontograma: odontogramaId });
+    if (dientes.length > 0) {
+      res.status(200).json({ message: 'Dientes found', data: dientes });
+    } else {
+      res.status(404).json({ message: 'No dientes found for this odontograma' });
+    }
+  } catch (error: any) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+export { sanitizeDiente, findAll, findOne, add, update, remove, findByOdontograma };
