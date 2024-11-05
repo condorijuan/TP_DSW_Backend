@@ -1,2 +1,5 @@
 ###GET ALL
 GET http://localhost:8080/api/cara
+
+###GET BY ID diente
+GET http://localhost:8080/api/cara/diente/1

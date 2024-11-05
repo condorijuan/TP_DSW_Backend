@@ -93,4 +93,17 @@ async function remove(req: Request, res: Response) {
   }
 }
 
-export { sanitizeCara, findAll, findOne, add, remove, update };
+async function findByDiente(req: Request, res: Response) {
+  try {
+    const dienteId = parseInt(req.params.dienteId, 10);
+    if (isNaN(dienteId)) {
+      return res.status(400).json({ message: 'Invalid ID format' });
+    }
+    const caras = await em.find(Cara, { diente: dienteId });
+    res.status(200).json({ message: 'Cara found', data: caras });
+  } catch (error: any) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+export { sanitizeCara, findAll, findOne, add, remove, update, findByDiente };

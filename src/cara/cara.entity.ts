@@ -6,13 +6,13 @@ import { Diente } from "../diente/diente.entity.js";
 export class Cara extends BaseEntity {
 
   @Property()
-  nombre!: number
+  nombre!: string | null
 
   @Property()
-  descripcion!: string
+  descripcion!: string | null
 
   @Property()
-  estado!: string
+  estado!: string | null
 
   @ManyToOne(() => Diente, { nullable: false })
   diente!: Rel<Diente>

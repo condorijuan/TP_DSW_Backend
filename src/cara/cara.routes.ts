@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { sanitizeCara, findAll, findOne, add, remove, update } from "./cara.controler.js";
+import { sanitizeCara, findAll, findOne, add, remove, update, findByDiente } from "./cara.controler.js";
 
 export const caraRouters = Router();
 
@@ -14,3 +14,5 @@ caraRouters.put('/:id', sanitizeCara, update);
 caraRouters.patch('/:id', sanitizeCara, update);
 
 caraRouters.delete('/:id', remove);
+
+caraRouters.get('/diente/:dienteId', findByDiente); // Nueva ruta
