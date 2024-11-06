@@ -7,7 +7,7 @@ caraRouters.get('/', findAll);
 
 caraRouters.get('/:id', sanitizeCara, findOne);
 
-caraRouters.post('/', sanitizeCara, add);
+caraRouters.post('/', add);
 
 caraRouters.put('/:id', sanitizeCara, update);
 

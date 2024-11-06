@@ -3,3 +3,14 @@ GET http://localhost:8080/api/diente
 
 ###GET BY ID
 GET http://localhost:8080/api/diente/odontograma/1
+
+###POST
+POST http://localhost:8080/api/diente
+Content-Type: application/json
+
+{
+    "codigo": 1,
+    "descripcion": "Incisivo Central Superior Derecho",
+    "estado": "Sano",
+    "odontograma":1
+}

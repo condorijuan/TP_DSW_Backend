@@ -7,7 +7,7 @@ dienteRouters.get('/', findAll);
 
 dienteRouters.get('/:id', findOne);
 
-dienteRouters.post('/', sanitizeDiente, add);
+dienteRouters.post('/', add);
 
 dienteRouters.put('/:id', sanitizeDiente, update);
 

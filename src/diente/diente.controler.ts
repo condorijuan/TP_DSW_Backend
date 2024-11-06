@@ -49,7 +49,7 @@ async function findOne(req: Request, res: Response) {
 
 async function add(req: Request, res: Response) {
   try {
-    const diente = em.create(Diente, req.body.sanitize);
+    const diente = em.create(Diente, req.body);
     await em.persistAndFlush(diente);
     res.status(201).json({ message: 'Diente created', data: diente });
   }

@@ -10,6 +10,7 @@ function sanitizeCara(req: Request, res: Response, next: NextFunction) {
     nombre: req.body.nombre,
     descripcion: req.body.descripcion,
     estado: req.body.estado,
+    diente: req.body.diente
   };
 
   Object.keys(req.body.sanitize).forEach(key => {
@@ -48,7 +49,7 @@ async function findOne(req: Request, res: Response) {
 
 async function add(req: Request, res: Response) {
   try {
-    const cara = em.create(Cara, req.body.sanitize);
+    const cara = em.create(Cara, req.body);
     await em.persistAndFlush(cara);
     res.status(201).json({ message: 'Cara created', data: cara });
   } catch (error: any) {

@@ -3,3 +3,14 @@ GET http://localhost:8080/api/cara
 
 ###GET BY ID diente
 GET http://localhost:8080/api/cara/diente/1
+
+###POST
+POST http://localhost:8080/api/cara
+Content-Type: application/json
+
+{
+    "nombre": "Vestibular",
+    "descripcion": "Vestibular",
+    "estado": "Sano",
+    "diente":1
+}
