@@ -85,7 +85,8 @@ async function remove(req: Request, res: Response) {
     }
     const diente = await em.findOne(Diente, id);
     if (diente) {
-      await em.removeAndFlush(diente);
+      /* await em.removeAndFlush(diente); */
+      await em.remove(diente).flush();
       res.status(200).json({ message: 'Diente removed', data: diente });
     } else {
       res.status(404).json({ message: 'Diente not found' });

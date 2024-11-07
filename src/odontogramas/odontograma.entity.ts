@@ -7,9 +7,7 @@ import { Paciente } from "../paciente/paciente.entity.js";
 export class Odontograma extends BaseEntity {
 
 
-    @OneToMany(() => Diente, (diente) => diente.odontograma, {
-        cascade: [Cascade.ALL]
-    })
+    @OneToMany(() => Diente, (diente) => diente.odontograma, { cascade: [Cascade.ALL] })
     dientes = new Collection<Diente>(this)
 
     @Property()

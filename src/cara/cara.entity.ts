@@ -14,6 +14,6 @@ export class Cara extends BaseEntity {
   @Property()
   estado!: string | null
 
-  @ManyToOne(() => Diente, { nullable: false })
+  @ManyToOne(() => Diente, { nullable: false, onDelete: 'cascade' })
   diente!: Rel<Diente>
 }

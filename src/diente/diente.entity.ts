@@ -15,7 +15,7 @@ export class Diente extends BaseEntity {
   @Property()
   estado!: string | null
 
-  @ManyToOne(() => Odontograma, { nullable: false })
+  @ManyToOne(() => Odontograma, { nullable: false, onDelete: 'cascade' })
   odontograma!: Rel<Odontograma>
 
   @OneToMany(() => Cara, cara => cara.diente, { cascade: [Cascade.ALL] })

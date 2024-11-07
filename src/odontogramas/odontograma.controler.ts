@@ -86,7 +86,7 @@ async function remove(req: Request, res: Response) {
     }
     const odontograma = await em.findOne(Odontograma, id);
     if (odontograma) {
-      await em.removeAndFlush(odontograma);
+      await em.remove(odontograma).flush();
       res.status(200).json({ message: 'Odontograma removed', data: odontograma });
     } else {
       res.status(404).json({ message: 'Odontograma not found' });
