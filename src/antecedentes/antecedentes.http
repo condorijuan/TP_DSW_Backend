@@ -1,4 +1,64 @@
-###GET ALL
+###GET ALL ANTECEDENTES
 GET http://localhost:8080/api/antecedente
+
+#### POST a antecedente
+# @name createAntecedente
+POST http://localhost:800/api/antecedente
+Content-Type: application/json
+
+{
+    "descripcion": "leve",
+    "tipoantecedente": 2
+}
+
+### ID
+@id = {{createAntecedente.response.body.data.id}}
+
+### GET one antecedente
+http://localhost:800/api/antecedente/{{id}}
+
+### PUT an antecedente
+PUT http://localhost:8080/api/antecedente/{{id}}
+Content-Type: application/json
+
+{
+    "descripcion": "grave",
+    "tipoantecedente": 2
+}
+
+### POST an antecedente
+POST http://localhost:8080/api/antecedente
+Content-Type: application/json
+
+{
+    "descripcion": "muy grave",
+    "tipoantecedente": 2  
+}
+
+### POST an antecedente
+# @name createAntecedenteToDelete
+POST http://localhost:8080/api/antecedente
+Content-Type: application/json
+
+{
+    "descripcion": "extremadamente grave",
+    "tipoantecedente": 2  
+}
+
+### DELETE an antecedente
+@idToDelete = {{createAntecedenteToDelete.response.body.data.id}}
+DELETE http://localhost:8080/api/antecedente/{{idToDelete}}
+
+### PATCH an antecedente
+PATCH http://localhost:8080/api/antecedente/{{idToDelete}}
+Content-Type: application/json
+
+{
+    "descripcion": "extremadamente leve",
+}
+
+### DELETE an antecedente
+DELETE http://localhost:8080/api/antecedente/{{idToDelete}}
+
 
 

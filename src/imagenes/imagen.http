@@ -1,2 +1,54 @@
 ### GET ALL
 Get http://localhost:8080/api/imagen
+
+### POST A IMAGEN 
+# @name createImagen
+POST http://localhost:8080/api/imagen
+Content-Type: application/json
+
+{
+    "descripcion": "regular estado general",
+    "tipoImagen": 2 
+}
+
+### ID
+@id = {{createImagen.response.body.data.id}}
+
+### GET ONE
+GET http://localhost:8080/api/imagen/{{id}}
+
+
+### PUT a imagen
+PUT http://localhost:8080/api/imagen{{id}}
+Content-Type: application/json
+
+{
+    "descripcion": "mal estado general",
+    "tipoImagen": 2 
+}
+
+### POST a imagen
+# @name createImagenToDelete
+POST http://localhost:8080/api/imagen
+Content-Type: application/json
+
+{
+    "descripcion": "pesimo estado general",
+    "tipoImagen": 2 
+}
+
+### DELETE a imagen
+@idToDelete = {{createImagenToDelete.response.body.data.id}}
+DELETE http://localhost:8080/api/imagen{{idToDelete}}
+
+### PATCH a imagen
+PATCH http://localhost:8080/api/imagen/{{idToDelete}}
+Content-Type: application/json
+
+{
+    "descripcion": "recontra pesimo estado general",
+    "tipoImagen": 2     
+}
+
+### DELETE a imagen
+DELETE  http://localhost:8080/api/imagen{{idToDelete}}
