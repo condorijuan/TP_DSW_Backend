@@ -10,6 +10,7 @@ function sanitizeOdontograma(req: Request, res: Response, next: NextFunction) {
     descripcion: req.body.descripcion,
     fecha: req.body.fecha,
     link: req.body.link,
+    paciente: req.body.paciente
   };
 
   Object.keys(req.body.sanitize).forEach(key => {
