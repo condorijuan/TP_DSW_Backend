@@ -1,2 +1,29 @@
 ### GET ALL
 GET http://localhost:8080/api/tipoantecedente
+
+### POST TIPOANTECEDENTE TO DELETE
+# @name createtipoAntecedenteToDelete
+POST http://localhost:8080/api/tipoantecedente
+Content-Type: application/json
+
+{
+    "nombre": "Genetico"
+}
+
+### ID
+@id = {{}}
+
+### GET ONE
+GET http://localhost:8080/api/tipoantecedente/{{idToDelete}}
+
+### PUT
+PUT http://localhost:8080/api/tipoantecedente/{{idToDelete}}
+Content-Type: application/json
+
+{
+    "nombre": "Geneticoo"
+}
+
+### DELETE
+@idToDelete = {{createtipoAntecedenteToDelete.response.body.data.id}}
+DELETE  http://localhost:8080/api/tipoantecedente/{{idToDelete}}
