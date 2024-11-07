@@ -9,12 +9,12 @@ POST http://localhost:8080/api/paciente
 Content-Type: application/json
 
 {
-    "nombre": "Juan",
-    "apellido": "Ignacio",
-    "genero":"Masculino",
-    "direccion":"Calle falsa 123",
-    "telefono":"123456789",
-    "email":"correo@gmail.com.ar"
+    "nombre": "Mariela",
+    "apellido": "Gomez",
+    "genero":"Femenino",
+    "direccion":"Calle falsa 456",
+    "telefono":"4330033",
+    "email":"mariela@gmail.com.ar"
 }
 
 ### PUT
