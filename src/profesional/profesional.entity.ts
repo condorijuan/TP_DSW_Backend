@@ -1,10 +1,11 @@
 import { Entity, OneToMany, Property, Cascade, Collection } from "@mikro-orm/core";
 import { BaseEntity } from "../shared/db/baseEntity.entity.js";
+import { Turno } from "../turno/turno.entity.js";
 
 @Entity()
-export class Profesional extends BaseEntity{
+export class Profesional extends BaseEntity {
 
-  @Property()  
+  @Property()
   nombre!: string
 
   @Property()
@@ -13,13 +14,15 @@ export class Profesional extends BaseEntity{
   @Property()
   direccion!: string
 
-  @Property()  
+  @Property()
   telefono!: string
 
-  @Property() 
+  @Property()
   email!: string
 
-  @Property()  
+  @Property()
   estado!: string
 
+  @OneToMany(() => Turno, turno => turno.profesional)
+  turnos = new Collection<Turno>(this)
 }
