@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { sanitizeProfesional, findAll, findOne, add, remove, update } from "./profesional.controler.js";
+import { sanitizeProfesional, findAll, findOne, add, remove, update, findLogin } from "./profesional.controler.js";
 
 export const profesionalRouters = Router();
 
@@ -14,3 +14,5 @@ profesionalRouters.put('/:id', sanitizeProfesional, update);
 profesionalRouters.patch('/:id', sanitizeProfesional, update);
 
 profesionalRouters.delete('/:id', remove);
+
+profesionalRouters.post('/login', findLogin);

@@ -25,4 +25,7 @@ export class Profesional extends BaseEntity {
 
   @OneToMany(() => Turno, turno => turno.profesional)
   turnos = new Collection<Turno>(this)
+
+  @Property()
+  contraseña!: string
 }

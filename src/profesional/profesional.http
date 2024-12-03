@@ -42,3 +42,12 @@ Content-Type: application/json
 ### DELETE
 DELETE http://localhost:8080/api/profesional/3
 
+### login
+
+POST http://localhost:8080/api/profesional/login
+Content-Type: application/json
+
+{
+    "email": "",
+    "password": "123456"
+}

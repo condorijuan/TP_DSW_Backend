@@ -34,7 +34,7 @@ async function findAll(req: Request, res: Response) {
 
 async function findOne(req: Request, res: Response) {
   try {
-    const id = parseInt(req.params.id);  
+    const id = parseInt(req.params.id);
     if (isNaN(id)) {
       return res.status(400).json({ message: 'Invalid ID format' });
     }
@@ -61,7 +61,7 @@ async function add(req: Request, res: Response) {
 
 async function update(req: Request, res: Response) {
   try {
-    const id = parseInt(req.params.id); 
+    const id = parseInt(req.params.id);
     if (isNaN(id)) {
       return res.status(400).json({ message: 'Invalid ID format' });
     }
@@ -80,7 +80,7 @@ async function update(req: Request, res: Response) {
 
 async function remove(req: Request, res: Response) {
   try {
-    const id = parseInt(req.params.id); 
+    const id = parseInt(req.params.id);
     if (isNaN(id)) {
       return res.status(400).json({ message: 'Invalid ID format' });
     }
@@ -96,4 +96,20 @@ async function remove(req: Request, res: Response) {
   }
 }
 
-export { sanitizeProfesional, findAll, findOne, add, remove, update };
+async function findLogin(req: Request, res: Response) {
+  try {
+    const profesional = await em.findOne(Profesional
+      , { email: req.body.email, contraseña: req.body.contraseña });
+    if (profesional) {
+      res.status(200).json({ message: 'Profesional found', data: profesional });
+    }
+    else {
+      res.status(404).json({ message: 'Profesional not found' });
+    }
+  }
+  catch (error: any) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+export { sanitizeProfesional, findAll, findOne, add, remove, update, findLogin };
