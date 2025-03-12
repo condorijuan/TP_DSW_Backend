@@ -1,6 +1,7 @@
-import { Entity, OneToMany, Property, Cascade, Collection } from "@mikro-orm/core";
+import { Entity, OneToMany, Property, Cascade, Collection, OneToOne, Rel } from "@mikro-orm/core";
 import { BaseEntity } from "../shared/db/baseEntity.entity.js";
 import { Turno } from "../turno/turno.entity.js";
+import { Usuario } from "../usuario/usuario.entity.js";
 
 @Entity()
 export class Profesional extends BaseEntity {
@@ -28,4 +29,7 @@ export class Profesional extends BaseEntity {
 
   @Property()
   contraseña!: string
+
+  @OneToOne(() => Usuario, usuario => usuario.profesional, { cascade: [Cascade.ALL], nullable: false })
+  usuario?: Rel<Usuario>;
 }

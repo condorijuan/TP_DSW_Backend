@@ -10,6 +10,7 @@ import { odontogramaRouters } from './odontogramas/odontograma.routes.js';
 import { dienteRouters } from './diente/diente.routes.js';
 import { caraRouters } from './cara/cara.routes.js';
 import { tipoantecedenteRouters } from './tipo-antecente/tipo-antecedente.routes.js';
+import { usuarioRouters } from './usuario/usuario.routes.js';
 import { orm, syncSchema } from './shared/db/orm.js';
 import { RequestContext } from '@mikro-orm/core';
 import cors from 'cors'
@@ -44,6 +45,8 @@ app.use('/api/odontograma', odontogramaRouters)
 app.use('/api/diente', dienteRouters)
 
 app.use('/api/cara', caraRouters)
+
+app.use('/api/usuario', usuarioRouters)
 
 app.use((_, res) => {
   return res.status(404).send({ message: 'Resource not Found' });

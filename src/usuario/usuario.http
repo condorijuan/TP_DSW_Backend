@@ -1,0 +1,24 @@
+###GET ALL
+GET http://localhost:8080/api/usuario
+
+
+### post
+
+POST http://localhost:8080/api/usuario
+Content-Type: application/json
+
+{    
+    "correo": "asd@asd",
+    "contraseña": "123456asd",
+    "tipo": "admin"
+}
+
+### login
+
+POST http://localhost:8080/api/usuario/login
+Content-Type: application/json
+
+{
+    "correo": "admin",
+    "contrasena": "admin"
+}
