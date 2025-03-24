@@ -9,10 +9,12 @@ const em = orm.em
 
 function sanitizeUsuario(req: Request, res: Response, next: NextFunction) {
   req.body.sanitize = {
-    id: req.body.id,
-    correo: req.body.correo,
-    contrasena: req.body.contrasena,
+    email: req.body.email,
+    contraseña: req.body.contraseña,
     tipo: req.body.tipo,
+    profesional: req.body.profesional,
+    nombre: req.body.nombre,
+    apellido: req.body.apellido,
   };
 
   Object.keys(req.body.sanitize).forEach(key => {
@@ -35,28 +37,28 @@ async function findAll(req: Request, res: Response) {
 
 async function findbyEmail(req: Request, res: Response) {
   try {
-    const correo = req.body.correo;
-    const contrasena = req.body.contrasena;
+    const email = req.body.email;
+    const contrasena = req.body.contraseña;
     /*     //hash temporal//
         const temp = await bcrypto.hash(contrasena, 10);
         console.log(temp); */
-    const usuario = await em.findOne(Usuario, { correo });
+    const usuario = await em.findOne(Usuario, { email });
     if (usuario) {
-      const validacion = await bcrypto.compare(contrasena, usuario.contrasena);
+      const validacion = await bcrypto.compare(contrasena, usuario.contraseña);
       if (!validacion) {
-        res.status(401).json({ message: 'Contraseña incorrecta' });
+        return res.status(401).json({ message: 'Contraseña incorrecta' });
       }
       const token = jwt.sign({ id: usuario.id, tipo: usuario.tipo, profecional: usuario.profesional },
         'doctor-docto',
         { expiresIn: '1h' }
       );
-      const { contrasena: _, profesional, ...usuarioData } = usuario;
+      const { contraseña: _, id, ...usuarioData } = usuario;
       res.status(200).json({ token, data: usuarioData });
     } else {
-      res.status(404).json({ message: 'Usuario not found' });
+      return res.status(404).json({ message: 'Usuario not found' });
     }
   } catch (error: any) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 }
 
@@ -78,10 +80,25 @@ async function findOne(req: Request, res: Response) {
 }
 
 async function add(req: Request, res: Response) {
+  const { nombre, apellido, email, contraseña, tipo, profesional } = req.body.sanitize;
   try {
-    const usuario = em.create(Usuario, req.body.sanitize);
+    //verifico si el usuario ya existe
+    const usuarioExistente = await em.findOne(Usuario, { email });
+    if (usuarioExistente) {
+      return res.status(400).json({ message: 'Usuario ya existe' });
+    }
+
+    //creacion de usuario
+    const hash = await bcrypto.hash(contraseña, 10);
+    const usuario = new Usuario();
+    usuario.nombre = nombre;
+    usuario.apellido = apellido;
+    usuario.email = email;
+    usuario.contraseña = hash;
+    usuario.tipo = tipo;
+    usuario.profesional = profesional;
     await em.persistAndFlush(usuario);
-    res.status(201).json({ message: 'Usuario created', data: usuario });
+    res.status(201).json({ message: 'Usuario creado' });
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }

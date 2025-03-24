@@ -12,10 +12,10 @@ export class Usuario extends BaseEntity {
   apellido!: string
 
   @Property()
-  correo!: string
+  email!: string
 
   @Property()
-  contrasena!: string
+  contraseña!: string
 
   @Property()
   tipo!: string

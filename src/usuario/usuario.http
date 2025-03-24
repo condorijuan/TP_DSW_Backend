@@ -8,9 +8,11 @@ POST http://localhost:8080/api/usuario
 Content-Type: application/json
 
 {    
-    "correo": "asd@asd",
-    "contraseña": "123456asd",
-    "tipo": "admin"
+    "email": "asd@asd",
+    "contraseña": "asd",
+    "tipo": "admin",
+    "nombre": "asd",
+    "apellido": "asd"
 }
 
 ### login
@@ -19,6 +21,16 @@ POST http://localhost:8080/api/usuario/login
 Content-Type: application/json
 
 {
-    "correo": "admin",
-    "contrasena": "admin"
+    "email": "asd@asd",
+    "contraseña": "asd"
+}
+
+### login
+
+POST http://localhost:8080/api/usuario/login
+Content-Type: application/json
+
+{
+    "email": "cliente@cliente",
+    "contraseña": "asd"
 }

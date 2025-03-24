@@ -5,7 +5,9 @@ import { validarAdmin } from "../validarAdmin.js";
 
 export const usuarioRouters = Router();
 
-usuarioRouters.get('/', [validarAdmin, validarToken], findAll);
+/* usuarioRouters.get('/', [validarAdmin, validarToken], findAll);
+ */
+usuarioRouters.get('/', findAll);
 
 usuarioRouters.get('/:id', validarToken, findOne);
 
